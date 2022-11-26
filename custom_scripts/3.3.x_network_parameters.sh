@@ -28,7 +28,7 @@ remediate() {
   }
   IPV6F_CHK() {
     l_ipv6s=""
-    grubfile=$(find /boot -type f \( -name 'grubenv' -o -name 'grub.conf' - o -name 'grub.cfg' \) -exec grep -Pl -- '^\h*(kernelopts=|linux|kernel)' {} \; )
+    grubfile=$(find /boot -type f \( -name 'grubenv' -o -name 'grub.conf' -o -name 'grub.cfg' \) -exec grep -Pl -- '^\h*(kernelopts=|linux|kernel)' {} \; )
     if [ -s "$grubfile" ]; then
       ! grep -P -- "^\h*(kernelopts=|linux|kernel)" "$grubfile" | grep -vq -- ipv6.disable=1 && l_ipv6s="disabled"
     fi
@@ -81,7 +81,7 @@ audit_and_fix() {
   }
   ipv6_chk() {
     l_ipv6s=""
-    grubfile=$(find /boot -type f \( -name 'grubenv' -o -name 'grub.conf' - o -name 'grub.cfg' \) -exec grep -Pl -- '^\h*(kernelopts=|linux|kernel)' {} \;)
+    grubfile=$(find /boot -type f \( -name 'grubenv' -o -name 'grub.conf' -o -name 'grub.cfg' \) -exec grep -Pl -- '^\h*(kernelopts=|linux|kernel)' {} \;)
     if [ -s "$grubfile" ]; then
       ! grep -P -- "^\h*(kernelopts=|linux|kernel)" "$grubfile" | grep -vq -- ipv6.disable=1 && l_ipv6s="disabled"
     fi
