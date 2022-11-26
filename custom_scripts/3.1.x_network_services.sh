@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-source ./modprobe_audit_and_fixing.sh
+source $(dirname "$0")/modprobe_audit_and_fixing.sh
 
 echo "3.1.2 Ensure wireless interfaces are disabled"
 echo "NOT DISABLING"

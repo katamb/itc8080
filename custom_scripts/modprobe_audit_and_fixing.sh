@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 remediate() {
   l_mname="$1" # set module name
