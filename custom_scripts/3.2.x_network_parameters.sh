@@ -14,11 +14,9 @@
     done
     # Set correct parameter in a kernel parameter file
     if
-      ! grep -Pslq -- "^\h*$l_kpname\h*=\h*$l_kpvalue\b\h*(#.*)?$"
-      $l_searchloc
+      ! grep -Pslq -- "^\h*$l_kpname\h*=\h*$l_kpvalue\b\h*(#.*)?$" $l_searchloc
     then
-      echo -e "\n - Setting \"$l_kpname\" to \"$l_kpvalue\" in
-            \"$l_kpfile\""
+      echo -e "\n - Setting \"$l_kpname\" to \"$l_kpvalue\" in \"$l_kpfile\""
       echo "$l_kpname = $l_kpvalue" >>"$l_kpfile"
     fi
     # Set correct parameter in active kernel parameters
