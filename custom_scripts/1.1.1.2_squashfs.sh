@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 remediate() {
-  l_mname="cramfs" # set module name
+  l_mname="squashfs" # set module name
   # Check if the module exists on the system
   if [ -z "$(modprobe -n -v "$l_mname" 2>&1 | grep -Pi -- "\h*modprobe:\h+FATAL:\h+Module\h+$l_mname\h+not\h+found\h+in\h+directory")" ]; then
     # Remediate loadable
