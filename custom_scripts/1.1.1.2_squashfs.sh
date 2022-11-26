@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
+# todo remove file
+
 remediate() {
-  l_mname="squashfs" # set module name
+  l_mname="$1" # set module name
   # Check if the module exists on the system
   if [ -z "$(modprobe -n -v "$l_mname" 2>&1 | grep -Pi -- "\h*modprobe:\h+FATAL:\h+Module\h+$l_mname\h+not\h+found\h+in\h+directory")" ]; then
     # Remediate loadable
@@ -26,10 +28,11 @@ remediate() {
   fi
 }
 
-{
+audit_and_fix() {
   l_output="" l_output2=""
-  l_mname="squashfs" # set module name
+  l_mname="$1" # set module name
   # Check if the module exists on the system
+  echo "Auditing $l_mname"
   if
     [ -z "$(modprobe -n -v "$l_mname" 2>&1 | grep -Pi -- "\h*modprobe:\h+FATAL:\h+Module\h+$l_mname\h+not\h+found\h+in\h+directory")" ]
   then
@@ -64,7 +67,11 @@ remediate() {
     [ -n "$l_output" ] && echo -e "\n- Correctly set:\n$l_output\n"
 
     echo "Remediating"
-    remediate
+    remediate $1
 
   fi
 }
+
+audit_and_fix "cramfs"
+audit_and_fix "squashfs"
+audit_and_fix "udf"

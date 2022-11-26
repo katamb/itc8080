@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# todo remove file
 {
   l_output="" l_output2=""
   l_mname="cramfs" # set module name
