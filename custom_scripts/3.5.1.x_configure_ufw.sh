@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "3.5.1.1 Ensure ufw is installed"
-if [ "$(dpkg-query -W -f='${db:Status-Status}' ufw)" != "installed" ]; then
+if [ "$(dpkg-query -W -f='${db:Status-Status}' ufw)" == "installed" ]; then
   echo -e "\n- Audit Result:\n ** PASS **\nUFW is installed\n"
 else
   echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit failure:\nUFW not installed\n"
@@ -12,7 +12,7 @@ fi
 
 echo "3.5.1.2 Ensure iptables-persistent is not installed with ufw"
 not_installed="package 'iptables-persistent' is not installed and no information is available"
-if [ "$(dpkg-query -s iptables-persistent)" == "$not_installed" ]; then
+if [[ "$(dpkg-query -s iptables-persistent)" == *"$not_installed"* ]]; then
   echo -e "\n- Audit Result:\n ** PASS **\niptables-persistent is not installed\n"
 else
   echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit failure:\niptables-persistent is installed\n"
