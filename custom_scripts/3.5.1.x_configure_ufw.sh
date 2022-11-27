@@ -11,7 +11,7 @@ else
 fi
 
 echo "3.5.1.2 Ensure iptables-persistent is not installed with ufw"
-not_installed="package 'iptables-persistent' is not installed and no information is available"
+# todo needs attention
 if [[ "$(dpkg-query -s iptables-persistent)" == *"not installed"* ]]; then
   echo -e "\n- Audit Result:\n ** PASS **\niptables-persistent is not installed\n"
 else
@@ -43,13 +43,36 @@ else
   ufw enable
 fi
 
-#echo "3.5.1.4 Ensure ufw loopback traffic is configured"
-#not_installed="package 'iptables-persistent' is not installed and no information is available"
-#if [ "$(dpkg-query -s iptables-persistent)" == "$not_installed" ]; then
-  #echo -e "\n- Audit Result:\n ** PASS **\niptables-persistent is not installed\n"
-#else
-  #echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit failure:\niptables-persistent is installed\n"
+echo "3.5.1.4 Ensure ufw loopback traffic is configured"
+if [[ "$(ufw status verbose | tr -s ' ' | grep -c 'Anywhere on lo ALLOW IN Anywhere')" != 0 ]]; then
+  echo -e "\nufw allow in on lo is configured\n"
+else
+  echo -e "\nufw allow in on lo is not configured - configuring\n"
 
-  #echo "Remediating"
-  #apt purge iptables-persistent
-#fi
+  echo "Remediating"
+  ufw allow in on lo
+fi
+if [[ "$(ufw status verbose | tr -s ' ' | grep -c 'Anywhere DENY IN 127.0.0.0/8')" != 0 ]]; then
+  echo -e "\nufw deny in from 127.0.0.0/8 is configured\n"
+else
+  echo -e "\nufw deny in from 127.0.0.0/8 is not configured - configuring\n"
+
+  echo "Remediating"
+  ufw deny in from 127.0.0.0/8
+fi
+if [[ "$(ufw status verbose | tr -s ' ' | grep -c 'Anywhere ALLOW OUT Anywhere on lo')" != 0 ]]; then
+  echo -e "\nufw allow out on lo is configured\n"
+else
+  echo -e "\nufw allow out on lo is not configured - configuring\n"
+
+  echo "Remediating"
+  ufw allow out on lo
+fi
+if [[ "$(ufw status verbose | tr -s ' ' | grep -c 'Anywhere (v6) DENY IN ::1')" != 0 ]]; then
+  echo -e "\nufw deny in from ::1 is configured\n"
+else
+  echo -e "\nufw deny in from ::1 is not configured - configuring\n"
+
+  echo "Remediating"
+  ufw deny in from ::1
+fi
