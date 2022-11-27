@@ -7,7 +7,7 @@ else
   echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit failure:\nX Window System is installed\n"
 
   echo "Remediating"
-  apt purge xserver-xorg*
+  apt purge xserver-xorg* -y
 fi
 
 echo "2.2.2 Ensure Avahi Server is not installed"
@@ -19,7 +19,7 @@ else
   echo "Remediating"
   systemctl stop avahi-daaemon.service
   systemctl stop avahi-daemon.socket
-  apt purge avahi-daemon
+  apt purge avahi-daemon -y
 fi
 
 echo "2.2.3 Ensure CUPS is not installed"
@@ -29,7 +29,7 @@ else
   echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit failure:\nCUPS is installed\n"
 
   echo "Remediating"
-  apt purge cups
+  apt purge cups -y
 fi
 
 echo "2.2.4 Ensure DHCP Server is not installed"
@@ -39,7 +39,7 @@ else
   echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit failure:\nDHCP Server is installed\n"
 
   echo "Remediating"
-  apt purge isc-dhcp-server
+  apt purge isc-dhcp-server -y
 fi
 
 echo "2.2.5 Ensure LDAP server is not installed"
@@ -49,7 +49,7 @@ else
   echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit failure:\nLDAP Server is installed\n"
 
   echo "Remediating"
-  apt purge slapd
+  apt purge slapd -y
 fi
 
 echo "2.2.6 Ensure NFS is not installed"
@@ -59,5 +59,5 @@ else
   echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit failure:\nNFS is installed\n"
 
   echo "Remediating"
-  apt purge nfs-kernel-server
+  apt purge nfs-kernel-server -y
 fi
