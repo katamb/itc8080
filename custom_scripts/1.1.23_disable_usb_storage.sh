@@ -1,4 +1,4 @@
-#!/bin/
+#!/bin/bash
 
 # todo needs rework
 touch /etc/modprobe.d/usb-storage.conf
