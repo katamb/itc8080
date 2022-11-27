@@ -11,8 +11,7 @@ else
 fi
 
 echo "3.5.1.2 Ensure iptables-persistent is not installed with ufw"
-# todo needs attention
-if [[ "$(dpkg-query -s iptables-persistent)" == *"not installed"* ]]; then
+if [[ "$(dpkg-query -s iptables-persistent 2>&1)" == *"not installed"* ]]; then
   echo -e "\n- Audit Result:\n ** PASS **\niptables-persistent is not installed\n"
 else
   echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit failure:\niptables-persistent is installed\n"
