@@ -13,6 +13,7 @@ Scripts are based on: CIS_Debian_Linux_11_Benchmark_v1.0.0.pdf
 ### Section 1
 ### Section 2 - services
 * 2.1 time synchronization - doesn't really help us reduce attack surface
+* 2.2.15 Ensure mail transfer agent is configured for local-only mode - NOT DISABLING - requires modifying conf file manually
 ### Section 3 - networking
 * 3.1.1 Ensure wireless interfaces are disabled - NOT DISABLING - may cause networking issues, especially in the future
 * 3.1.2 Ensure wireless interfaces are disabled - NOT DISABLING - wireless is needed for most workstations

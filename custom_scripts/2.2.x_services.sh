@@ -149,3 +149,16 @@ else
   echo "Remediating"
   apt purge nis -y
 fi
+
+echo "2.2.15 Ensure mail transfer agent is configured for local-only mode"
+echo "NOT DISABLING - requires modifying conf file manually"
+
+echo "2.2.16 Ensure rsync service is either not installed or masked"
+if [ "$(dpkg-query -W -f='${db:Status-Status}' nis 2>&1 | grep -c 'not-installed\|no packages found')" == 1 ]; then
+  echo -e "\n- Audit Result:\n ** PASS **\nrsync is not installed\n"
+else
+  echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit failure:\nrsync is installed\n"
+
+  echo "Remediating"
+  apt purge rsync -y
+fi
