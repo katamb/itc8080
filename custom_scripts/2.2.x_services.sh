@@ -17,7 +17,7 @@ else
   echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit failure:\nAvahi Server is installed\n"
 
   echo "Remediating"
-  systemctl stop avahi-daaemon.service
+  systemctl stop avahi-daemon.service
   systemctl stop avahi-daemon.socket
   apt purge avahi-daemon -y
 fi
