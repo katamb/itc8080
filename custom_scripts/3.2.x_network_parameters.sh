@@ -189,8 +189,12 @@
   fi
 }
 
+echo "---"
 echo "3.2.1 Ensure packet redirect sending is disabled"
 3_2_1_audit_and_fix
+echo -e "---\n"
 
+echo "---"
 echo "3.2.2 Ensure IP forwarding is disabled"
 3_2_2_audit_and_fix
+echo -e "---\n"

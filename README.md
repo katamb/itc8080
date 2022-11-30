@@ -16,10 +16,10 @@ The scripts are aimed to keep the basic functionality needed for a workstation w
 Work in progress
 ### Section 2 - Services
 * 2.1 time synchronization - doesn't really help us reduce attack surface
-* 2.2.15 Ensure mail transfer agent is configured for local-only mode - NOT DISABLING - requires modifying conf file manually
+* 2.2.15 Ensure mail transfer agent is configured for local-only mode - requires modifying conf file manually
 ### Section 3 - Networking
-* 3.1.1 Ensure wireless interfaces are disabled - NOT DISABLING - may cause networking issues, especially in the future
-* 3.1.2 Ensure wireless interfaces are disabled - NOT DISABLING - wireless is needed for most workstations
+* 3.1.1 Ensure wireless interfaces are disabled - may cause networking issues, especially in the future
+* 3.1.2 Ensure wireless interfaces are disabled - wireless is needed for most workstations
 ### Section 4 - Logging and auditing
 While logging and auditing is very important, it's also very system and organization specific and does not really help us achieve the goal of hardening the system against attacks in most cases. This should be configured according to needs.
 ### Section 5 - AAA

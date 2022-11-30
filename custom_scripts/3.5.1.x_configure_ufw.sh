@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "---"
 echo "3.5.1.1 Ensure ufw is installed"
 if [ "$(dpkg-query -W -f='${db:Status-Status}' ufw)" == "installed" ]; then
   echo -e "\n- Audit Result:\n ** PASS **\nUFW is installed\n"
@@ -9,6 +10,7 @@ else
   echo "Remediating"
   apt install ufw
 fi
+echo -e "---\n"
 
 echo "3.5.1.2 Ensure iptables-persistent is not installed with ufw"
 if [[ "$(dpkg-query -s iptables-persistent 2>&1)" == *"not installed"* ]]; then

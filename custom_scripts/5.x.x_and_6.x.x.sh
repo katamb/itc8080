@@ -185,7 +185,7 @@ fi
 # 5.2.3
 find /etc/ssh -xdev -type f -name 'ssh_host_*_key.pub' -exec chmod u-x,go-wx {} \;
 find /etc/ssh -xdev -type f -name 'ssh_host_*_key.pub' -exec chown root:root {} \;
-echo "Audit Successful"
+echo "5.2.3 Audit Successful"
     echo "---"
 
 
