@@ -21,8 +21,7 @@ The scripts are aimed to keep the basic functionality needed for a workstation w
 * 1.5.4 - core dumping should be restricted if it seems needed in given environment
 * 1.6.x - AppArmor should be setup for the specific environment
 * 1.7.x - Does not directly help to reduce attack surface, more of a legal topic
-* 1.8.1 - GUI is usually needed for workstations
-* 
+* 1.8.x - would be reasonable to implement most of these, however only critical one seemed to be 1.8.7. Also xorg might be a better way to go, as it seems to be less resource hungry.
 ### Section 2 - Services
 * 2.1 time synchronization - doesn't really help us reduce attack surface
 * 2.2.15 Ensure mail transfer agent is configured for local-only mode - requires modifying conf file manually
