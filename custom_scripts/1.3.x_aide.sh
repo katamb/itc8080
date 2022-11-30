@@ -26,7 +26,7 @@ echo -e "---\n"
 echo "---"
 echo "1.3.2 Ensure filesystem integrity is regularly checked"
 needs_init=false
-if [ "$(grep -c -Prs '^([^#\n\r]+\h+)?(\/usr\/s?bin\/|^\h*)aide(\.wrapper)?\h+(--check|([^#\n\r]+\h+)?\$AIDEARGS)\b' /etc/cron.* /etc/crontab /var/spool/cron/)" -gt 0 ]; then
+if [ "$(grep -Prs '^([^#\n\r]+\h+)?(\/usr\/s?bin\/|^\h*)aide(\.wrapper)?\h+(--check|([^#\n\r]+\h+)?\$AIDEARGS)\b' /etc/cron.* /etc/crontab /var/spool/cron/ | wc -l)" -gt 0 ]; then
   echo -e "AIDE runs regularly\n"
 else
   echo -e "AIDE cronjob missing, remediating\n"
