@@ -13,7 +13,7 @@ The scripts are aimed to keep the basic functionality needed for a workstation w
 
 ## Documentation
 ### Section 1 - Initial setup
-Work in progress
+* 1.1.2 ...1.1.8 - running these changes among other scripts in virtual machine didn't always go smoothly, so these are not currently covered. Recommendation is to set this up while installing th OS. 
 * 1.2 - manual process
 * 1.3.1 - should be configured according to needs and initiated 
 * 1.4.1 - requires setting password, so should be done manually
