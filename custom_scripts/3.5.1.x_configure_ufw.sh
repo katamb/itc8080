@@ -12,6 +12,7 @@ else
 fi
 echo -e "---\n"
 
+echo "---"
 echo "3.5.1.2 Ensure iptables-persistent is not installed with ufw"
 if [[ "$(dpkg-query -s iptables-persistent 2>&1)" == *"not installed"* ]]; then
   echo -e "\n- Audit Result:\n ** PASS **\niptables-persistent is not installed\n"
@@ -21,7 +22,9 @@ else
   echo "Remediating"
   apt purge iptables-persistent
 fi
+echo -e "---\n"
 
+echo "---"
 echo "3.5.1.3 Ensure ufw service is enabled"
 if [ "$(systemctl is-enabled ufw.service)" == "enabled" ]; then
   echo -e "\n- UFW enabled\n"
@@ -43,7 +46,9 @@ else
   echo -e "\n- UFW daemon not active, enabling\n"
   ufw enable
 fi
+echo -e "---\n"
 
+echo "---"
 echo "3.5.1.4 Ensure ufw loopback traffic is configured"
 if [[ "$(ufw status verbose | tr -s ' ' | grep -c 'Anywhere on lo ALLOW IN Anywhere')" != 0 ]]; then
   echo -e "\nufw allow in on lo is configured\n"
@@ -77,10 +82,14 @@ else
   echo "Remediating"
   ufw deny in from ::1
 fi
+echo -e "---\n"
 
+echo "---"
 echo "3.5.1.5 Ensure ufw outbound connections are configured"
 echo "No need in current context"
+echo -e "---\n"
 
+echo "---"
 echo "3.5.1.6 Ensure ufw firewall rules exist for all open ports"
 ufw_out="$(ufw status verbose)"
 ss -tuln | awk '($5!~/%lo:/ && $5!~/127.0.0.1:/ && $5!~/::1/) {split($5, a,":"); print a[2]}' | sort | uniq | while read -r lpn; do
@@ -88,7 +97,9 @@ ss -tuln | awk '($5!~/%lo:/ && $5!~/127.0.0.1:/ && $5!~/::1/) {split($5, a,":");
   echo "Adding rule"
   ufw allow in "$lpn"
 done
+echo -e "---\n"
 
+echo "---"
 echo "3.5.1.7 Ensure ufw default deny firewall policy"
 if [[ "$(ufw status verbose | grep Default: | grep -c 'allow')" == 0 ]]; then
   echo -e "\nufw default deny firewall policy is configured\n"
@@ -108,3 +119,4 @@ else
   ufw default deny outgoing
   ufw default deny routed
 fi
+echo -e "---\n"
