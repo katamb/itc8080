@@ -195,6 +195,8 @@ echo -e "---\n"
 fix_auto_mount() {
   # Check if GNMOE Desktop Manager is installed. If package isn't installed, recommendation is Not Applicable\n
   # determine system's package manager
+  mkdir -r /org/gnome/desktop/media-handling/automount
+  mkdir -r /org/gnome/desktop/media-handling/automount-open
   l_pkgoutput=""
   if command -v dpkg-query >/dev/null 2>&1; then
     l_pq="dpkg-query -W"
