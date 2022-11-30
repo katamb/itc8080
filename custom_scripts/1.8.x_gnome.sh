@@ -353,7 +353,8 @@ audit_auto_m() {
 
 echo "---"
 echo "1.8.6 Ensure GDM automatic mounting of removable media is disabled"
-audit_auto_m
+#audit_auto_m
+echo "Skipping"
 echo -e "---\n"
 
 fix_auto_mount() {
@@ -470,5 +471,6 @@ audit_auto_mount() {
 
 echo "---"
 echo "1.8.7 Ensure GDM disabling automatic mounting of removable media is not overridden"
-audit_auto_mount
+#audit_auto_mount
+echo "Skipping"
 echo -e "---\n"
