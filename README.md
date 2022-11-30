@@ -9,7 +9,7 @@ The scripts are aimed to keep the basic functionality needed for a workstation w
 2) `sudo apt-get install git -y`
 3) `git clone https://github.com/katamb/itc8080.git`
 4) `cd itc8080`
-5) `./custom_hardening.sh`
+5) `sudo ./custom_hardening.sh`
 
 ## Documentation
 ### Section 1 - Initial setup
@@ -18,6 +18,11 @@ The scripts are aimed to keep the basic functionality needed for a workstation w
 * 1.3.1 - should be configured according to needs and initiated 
 * 1.4.1 - requires setting password, so should be done manually
 * 1.4.3 - requires setting password, should be done manually
+* 1.5.4 - core dumping should be restricted if it seems needed in given environment
+* 1.6.x - AppArmor should be setup for the specific environment
+* 1.7.x - Does not directly help to reduce attack surface, more of a legal topic
+* 1.8.1 - GUI is usually needed for workstations
+* 
 ### Section 2 - Services
 * 2.1 time synchronization - doesn't really help us reduce attack surface
 * 2.2.15 Ensure mail transfer agent is configured for local-only mode - requires modifying conf file manually
@@ -25,6 +30,7 @@ The scripts are aimed to keep the basic functionality needed for a workstation w
 * 3.1.1 Ensure wireless interfaces are disabled - may cause networking issues, especially in the future
 * 3.1.2 Ensure wireless interfaces are disabled - wireless is needed for most workstations
 todo some stuff in 3.3 doesn't work
+* 3.3.x - for some scripts reboot is required, as running configuration is not automatically updated. Also some of these audits may fail because ufw configuration overrides them.
 ### Section 4 - Logging and auditing
 While logging and auditing is very important, it's also very system and organization specific and does not really help us achieve the goal of hardening the system against attacks in most cases. This should be configured according to needs.
 ### Section 5 - AAA
