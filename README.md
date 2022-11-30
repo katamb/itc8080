@@ -15,7 +15,9 @@ The scripts are aimed to keep the basic functionality needed for a workstation w
 ### Section 1 - Initial setup
 Work in progress
 * 1.2 - manual process
-* 1.3 - 
+* 1.3.1 - should be configured according to needs and initiated 
+* 1.4.1 - requires setting password, so should be done manually
+* 1.4.3 - requires setting password, should be done manually
 ### Section 2 - Services
 * 2.1 time synchronization - doesn't really help us reduce attack surface
 * 2.2.15 Ensure mail transfer agent is configured for local-only mode - requires modifying conf file manually

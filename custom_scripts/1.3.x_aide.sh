@@ -17,10 +17,10 @@ if [ "$(dpkg-query -W -f='${db:Status-Status}' aide-common 2>&1 | grep -c 'not-i
 else
   echo -e "AIDE-common is installed\n"
 fi
-if [ "$needs_init" == true ]; then
-  aideinit
-  mv /var/lib/aide/aide.db.new /var/lib/aide/aide.db
-fi
+#if [ "$needs_init" == true ]; then
+#  aideinit
+#  mv /var/lib/aide/aide.db.new /var/lib/aide/aide.db
+#fi
 echo -e "---\n"
 
 echo "---"
