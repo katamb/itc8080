@@ -30,7 +30,7 @@ if [ "$(grep -c -Prs '^([^#\n\r]+\h+)?(\/usr\/s?bin\/|^\h*)aide(\.wrapper)?\h+(-
   echo -e "AIDE runs regularly\n"
 else
   echo -e "AIDE cronjob missing, remediating\n"
-  crontab -u root -e
+  #crontab -u root -e
   crontab -l > mycron
   echo "0 5 * * * /usr/bin/aide.wrapper --config /etc/aide/aide.conf --check" >> mycron
   crontab mycron
