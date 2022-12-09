@@ -32,25 +32,24 @@ todo some stuff in 3.3 doesn't work
 * 3.3.x - for some scripts reboot is required, as running configuration is not automatically updated. Also some of these audits may fail because ufw configuration overrides them.
 ### Section 4 - Logging and auditing
 While logging and auditing is very important, it's also very system and organization specific and does not really help us achieve the goal of hardening the system against attacks in most cases. This should be configured according to needs.
-### Section 5 - AAA
-* 5.2.4 missing
-* 5.2.14 missing
-* 5.2.15 missing
-* 5.2.17 missing
-* 5.2.20 missing
-* 5.2.21 missing
-* 5.3.x missing
-* 5.4.x missing
-* 5.4.x missing
-* 5.5.1.x missing
-* 5.5.2 missing
-* 5.5.4 missing
-* 5.5.5 missing
+### Section 5 - Access, Authentication, Authorization
+* 5.2.14 - Strong MAC algorithms come by default with Debian 11. SSH gives a warning when a weak MAC is used.
+* 5.2.15 - Strong Key Exchange alorithms come by default with Debian 11.
+* 5.2.17 - Banner configuration does not give any extra protection measures. Organizations that legally require to have a banner, usually have a customized version of it (e.g. with the name of the company)
+* 5.2.20 - Max session timeout can cause problems for servers with high automated/script usage. This setting should be configured manually as to not interfere with main business processes.
+* 5.3.1  - Sudo comes by default
+* 5.4.2  - Account lockout mechanisms need to be used carefully. Malicious actors can abuse this setting and interefere with users authentication attempts. 
+* 5.4.4  - Strong password hashing algorithms are used by default by Debain 11
+* 5.5.1.x - Password changes and password expiry settings are very organizational specific (e.g. for servers with numerous scripted SSH connections).
+* 5.5.2 - Any suspicious accounts identified should undergo a more thorough analysis and investigation. Just disabling them might not be a sufficient containment strategy.
+* 5.5.4 - Usermask configuration could break the functionality of scripts, should be done manually instead.
+* 5.5.5 - Shell timeout needs to be set in accordance with organizational requirements.
 ### Section 6 - System maintenance
-* 6.1.10 missing
-* 6.1.11 missing
-* 6.1.12 missing
-* 6.2.x missing
+* 6.1.10 - Unowned files/directories do not pose any direct threats, and critical/important files can be left after a certain user is deleted. Unowned files should be manually reviewed.
+* 6.1.11 - Ungroped files/directories do not pose any direct threats, and critical/important files can be left after a certain user is deleted. Ungrouped files should be manually reviewed
+* 6.1.12 - SUID executables pose a serious privilege escalation threat, and should be treated carefully. Any unknown SUID files and related activity need to undergo a thorough manual analysis.
+* 6.2.3 - Inconsistency with Groups should be analyzed manually to eradicate any possibilities of malicious exploitation.  
+
 
 --------------
 ## Deprecated stuff
